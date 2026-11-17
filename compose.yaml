@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: covoiturage-postgres
+    environment:
+      POSTGRES_DB: covoiturage_db
+      POSTGRES_USER: badr
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5433:5432"
+    volumes:
+      - covoiturage_data:/var/lib/postgresql/data
+
+volumes:
+  covoiturage_data:
