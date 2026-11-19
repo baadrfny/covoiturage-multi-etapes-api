@@ -1,4 +1,4 @@
-package com.covoiturage.covoiturage_api.dto;
+package com.covoiturage.covoiturage_api.dto.response;
 
 public record ConducteurResponse(
         Long id,

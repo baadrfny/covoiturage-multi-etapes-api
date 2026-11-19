@@ -2,7 +2,7 @@
 package com.covoiturage.covoiturage_api.service.impl;
 
 import com.covoiturage.covoiturage_api.dto.VehiculeRequest;
-import com.covoiturage.covoiturage_api.dto.VehiculeResponse;
+import com.covoiturage.covoiturage_api.dto.response.VehiculeResponse;
 import com.covoiturage.covoiturage_api.entity.Conducteur;
 import com.covoiturage.covoiturage_api.entity.Vehicule;
 import com.covoiturage.covoiturage_api.mapper.VehiculeMapper;

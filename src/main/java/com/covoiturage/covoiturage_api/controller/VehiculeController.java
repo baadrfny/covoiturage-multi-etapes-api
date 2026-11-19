@@ -2,7 +2,7 @@
 package com.covoiturage.covoiturage_api.controller;
 
 import com.covoiturage.covoiturage_api.dto.VehiculeRequest;
-import com.covoiturage.covoiturage_api.dto.VehiculeResponse;
+import com.covoiturage.covoiturage_api.dto.response.VehiculeResponse;
 import com.covoiturage.covoiturage_api.service.VehiculeService;
 
 import jakarta.validation.Valid;

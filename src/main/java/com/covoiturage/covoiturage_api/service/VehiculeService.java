@@ -2,7 +2,7 @@
 package com.covoiturage.covoiturage_api.service;
 
 import com.covoiturage.covoiturage_api.dto.VehiculeRequest;
-import com.covoiturage.covoiturage_api.dto.VehiculeResponse;
+import com.covoiturage.covoiturage_api.dto.response.VehiculeResponse;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.covoiturage.covoiturage_api.service;
 
 import com.covoiturage.covoiturage_api.dto.PassagerRequest;
-import com.covoiturage.covoiturage_api.dto.PassagerResponse;
+import com.covoiturage.covoiturage_api.dto.response.PassagerResponse;
 import com.covoiturage.covoiturage_api.entity.Passager;
 
 import java.util.List;

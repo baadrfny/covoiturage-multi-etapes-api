@@ -2,7 +2,7 @@
 package com.covoiturage.covoiturage_api.controller;
 
 import com.covoiturage.covoiturage_api.dto.PassagerRequest;
-import com.covoiturage.covoiturage_api.dto.PassagerResponse;
+import com.covoiturage.covoiturage_api.dto.response.PassagerResponse;
 import com.covoiturage.covoiturage_api.service.PassagerService;
 
 import jakarta.validation.Valid;

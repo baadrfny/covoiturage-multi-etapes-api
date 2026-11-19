@@ -1,7 +1,7 @@
 package com.covoiturage.covoiturage_api.service;
 
 import com.covoiturage.covoiturage_api.dto.ConducteurRequest;
-import com.covoiturage.covoiturage_api.dto.ConducteurResponse;
+import com.covoiturage.covoiturage_api.dto.response.ConducteurResponse;
 import java.util.List;
 
 public interface ConducteurService {

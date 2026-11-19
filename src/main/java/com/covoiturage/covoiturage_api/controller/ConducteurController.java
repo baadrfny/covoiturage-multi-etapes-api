@@ -1,7 +1,7 @@
 package com.covoiturage.covoiturage_api.controller;
 
 import com.covoiturage.covoiturage_api.dto.ConducteurRequest;
-import com.covoiturage.covoiturage_api.dto.ConducteurResponse;
+import com.covoiturage.covoiturage_api.dto.response.ConducteurResponse;
 import com.covoiturage.covoiturage_api.service.ConducteurService;
 
 import jakarta.validation.Valid;

@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.time.LocalDateTime;
@@ -47,10 +49,13 @@ public class Trajet {
     @Column(nullable = false)
     private StatutTrajet statut;
 
-    @OneToMany(mappedBy = "trajet")
+    @OneToMany(
+            mappedBy = "trajet",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     @OrderBy("ordre ASC")
-    private List<PointArret> pointsArret;
-
+    private List<PointArret> pointsArret = new ArrayList<>();
 
 
 }
