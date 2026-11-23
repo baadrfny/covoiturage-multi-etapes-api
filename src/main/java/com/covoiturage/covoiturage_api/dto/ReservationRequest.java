@@ -1,0 +1,12 @@
+package com.covoiturage.covoiturage_api.dto;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+public record ReservationRequest(
+        @NotNull Long passagerId,
+        @NotNull Long trajetId,
+        @NotNull Long pointMonteeId,
+        @NotNull Long pointDescenteId,
+        @NotNull @Min(1) Integer nombrePlaces
+) {}

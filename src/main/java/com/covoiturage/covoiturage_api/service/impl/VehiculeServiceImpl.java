@@ -17,13 +17,18 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class VehiculeServiceImpl implements VehiculeService {
+
 
     private final VehiculeRepository repository;
     private final ConducteurRepository conducteurRepository;
     private final TrajetRepository trajetRepository;
     private final VehiculeMapper mapper;
+    private static final Logger log = LoggerFactory.getLogger(VehiculeServiceImpl.class);
 
     public VehiculeServiceImpl(
             VehiculeRepository repository,
@@ -40,7 +45,9 @@ public class VehiculeServiceImpl implements VehiculeService {
     @Override
     public VehiculeResponse createVehicule(VehiculeRequest request) {
 
-        if (repository.existsByImmatriculation(request.immatriculation())) {
+        if(repository.existsByImmatriculation(request.immatriculation())){
+            log.warn("Vehicule creation rejected: immatriculation {} already exists",
+                    request.immatriculation());
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, "Immatriculation already exists");
         }
@@ -53,7 +60,9 @@ public class VehiculeServiceImpl implements VehiculeService {
         Vehicule vehicule = mapper.toEntity(request);
         vehicule.setConducteur(conducteur);
 
-        return mapper.toResponse(repository.save(vehicule));
+        Vehicule savedVehicule = repository.save(vehicule);
+        log.info("Vehicule created successfully with ID: {}", savedVehicule.getId());
+        return mapper.toResponse(savedVehicule);
     }
 
     @Override
@@ -90,6 +99,8 @@ public class VehiculeServiceImpl implements VehiculeService {
 
         if (repository.existsByImmatriculationAndIdNot(
                 request.immatriculation(), id)) {
+            log.warn("Vehicule update rejected: immatriculation {} already exists",
+                    request.immatriculation());
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, "Immatriculation already exists");
         }
@@ -106,7 +117,9 @@ public class VehiculeServiceImpl implements VehiculeService {
         vehicule.setCapacite(request.capacite());
         vehicule.setConducteur(conducteur);
 
-        return mapper.toResponse(repository.save(vehicule));
+        Vehicule updatedVehicule = repository.save(vehicule);
+        log.info("Vehicule updated successfully with ID: {}", updatedVehicule.getId());
+        return mapper.toResponse(updatedVehicule);
     }
 
     @Override
@@ -117,11 +130,15 @@ public class VehiculeServiceImpl implements VehiculeService {
                         HttpStatus.NOT_FOUND, "Vehicule not found"));
 
         if (trajetRepository.existsByVehiculeId(id)) {
+            log.warn("Vehicule deletion rejected: vehicle ID {} is associated with a trajet", id);
+
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
-                    "Vehicule associated with a trajet");
+                    "Vehicule associaed with a trajet"
+            );
         }
 
         repository.delete(vehicule);
+        log.info("Vehicule deleted successfully with ID: {}", id);
     }
 }
